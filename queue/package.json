@@ -1,0 +1,13 @@
+{
+  "name": "queue-test",
+  "description": "async and others queue testing",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+      "express": "3.x",
+      "request": "*",
+      "async": "*",
+      "mocha": "*",
+      "clone": "*"
+  }
+}

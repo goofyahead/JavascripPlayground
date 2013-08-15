@@ -1,0 +1,9 @@
+{
+  "name": "PooAndInheritance",
+  "description": "basic func and params",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+  	"request" : "*"
+  }
+}
