@@ -1,0 +1,15 @@
+{
+  "name": "gen_uids",
+  "description": "generate uids",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+      "node-uuid": "*",
+      "colors": "*",
+      "request": "*",
+      "gm" : "*",
+      "underscore": "*",
+      "easyimage": "*",
+      "async" : "*"
+  }
+}

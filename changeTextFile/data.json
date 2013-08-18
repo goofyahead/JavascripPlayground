@@ -1,0 +1,193 @@
+{
+  "ac": {
+    "name": "Angellist",
+    "redis": true,
+    "code": "ac"
+  },
+  "ark": {
+    "name": "Ark Link Match",
+    "redis": true,
+    "code": "ark"
+  },
+  "am": {
+    "name": "About.me",
+    "redis": true,
+    "code": "am"
+  },
+  "be": {
+    "name": "Behance",
+    "redis": true,
+    "code": "be"
+  },
+  "bl": {
+    "name": "Blogger",
+    "code": "bl"
+  },
+  "ca": {
+    "name": "Care2",
+    "code": "ca"
+  },
+  "da": {
+    "name": "DeviantArt",
+    "code": "da"
+  },
+  "dr": {
+    "name": "Dribbble",
+    "redis": true,
+    "code": "dr"
+  },
+  "em": {
+    "name": "Email Crawler",
+    "redis": true,
+    "prev": "mail_profile_mapping",
+    "code": "em"
+  },
+  "fb": {
+    "name": "Facebook",
+    "es": 2,
+    "code": "fb"
+  },
+  "fl": {
+    "name": "flavors.me",
+    "redis": true,
+    "code": "fl"
+  },
+  "fr": {
+    "name": "Flickr",
+    "redis": true,
+    "code": "fr"
+  },
+  "fs": {
+    "name": "Foursquare",
+    "redis": true,
+    "code": "fs"
+  },
+  "gh": {
+    "name": "Github",
+    "redis": true,
+    "code": "gh"
+  },
+  "gp": {
+    "name": "Google+",
+    "es": 2,
+    "redis": true,
+    "code": "gp"
+  },
+  "hn": {
+    "name": "Hacker News",
+    "code": "hn"
+  },
+  "ig": {
+    "name": "Instagram",
+    "redis": true,
+    "code": "ig"
+  },
+  "ke": {
+    "name": "Keek",
+    "code": "ke"
+  },
+  "kl": {
+    "name": "Klout",
+    "es": 2,
+    "redis": true,
+    "code": "kl"
+  },
+  "lf": {
+    "name": "Last.fm",
+    "redis": true,
+    "code": "lf"
+  },
+  "li": {
+    "name": "LinkedIn",
+    "es": 2,
+    "redis": true,
+    "code": "li"
+  },
+  "me": {
+    "name": "Meetup",
+    "code": "me"
+  },
+  "ne": {
+    "name": "Newsle",
+    "code": "ne"
+  },
+  "pt": {
+    "name": "Pinterest",
+    "redis": true,
+    "code": "pt"
+  },
+  "px": {
+    "name": "500px.com",
+    "code": "px"
+  },
+  "qu": {
+    "name": "Quora",
+    "redis": true,
+    "code": "qu"
+  },
+  "sc": {
+    "name": "SoundCloud",
+    "redis": true,
+    "code": "sc"
+  },
+  "so": {
+    "name": "StackOverflow",
+    "redis": true,
+    "code": "so"
+  },
+  "sp": {
+    "name": "Spotify",
+    "redis": true,
+    "code": "sp"
+  },
+  "sr": {
+    "name": "sprashivai.ru",
+    "redis": true,
+    "code": "sr"
+  },
+  "sv": {
+    "name": "Svpply",
+    "code": "sv"
+  },
+  "tu": {
+    "name": "Tumblr",
+    "redis": true,
+    "code": "tu"
+  },
+  "tw": {
+    "name": "Twitter",
+    "redis": true,
+    "code": "tw"
+  },
+  "vk": {
+    "name": "VK",
+    "code": "vk"
+  },
+  "vm": {
+    "name": "Vimeo",
+    "redis": true,
+    "code": "vm"
+  },
+  "wa": {
+    "name": "Wanelo",
+    "code": "wa"
+  },
+  "wp": {
+    "name": "WordPress",
+    "code": "wp"
+  },
+  "xi": {
+    "name": "Xing",
+    "code": "xi"
+  },
+  "ya": {
+    "name": "Ya.ru",
+    "redis": true,
+    "code": "ya"
+  },
+  "yt": {
+    "name": "YouTube",
+    "redis": true,
+    "code": "yt"
+  }
+}
