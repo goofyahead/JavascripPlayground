@@ -1,0 +1,9 @@
+{
+  "name": "Exception Handling",
+  "description": "async and sync exception propagation and handling",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+  	"colors" : "*"
+  }
+}
