@@ -1,0 +1,10 @@
+{
+  "name": "utf8",
+  "description": "generate uids",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+      "utf8": "*",
+      "colors": "*"
+  }
+}
