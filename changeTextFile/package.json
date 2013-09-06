@@ -5,6 +5,7 @@
   "private": true,
   "dependencies": {
       "node-uuid": "*",
-      "colors": "*"
+      "colors": "*",
+      "lazy" : "*"
   }
 }
