@@ -1,0 +1,12 @@
+{
+  "name": "redis_client",
+  "description": "test redis connection and clients",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+      "colors": "*",
+      "validator" :"*",
+      "hiredis" : "*",
+      "redis" : "*"
+  }
+}
