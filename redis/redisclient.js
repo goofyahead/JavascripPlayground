@@ -1,8 +1,11 @@
 var redis = require("redis"),
-     
-client = redis.createClient(22122, '127.0.0.1', {
-	no_ready_check : true
-});
+
+// TWEMPROXY CODE
+// client = redis.createClient(22122, '127.0.0.1', {
+// 	no_ready_check : true
+// });
+
+client = redis.createClient();
 
     // if you'd like to select database 3, instead of 0 (default), call
     // client.select(3, function() { /* ... */ });
@@ -36,6 +39,30 @@ client.smembers('tokens', function(err, reply){
 /*client.set('token:count:1235', 1, function (err, reply){
 	console.log(reply);
 });*/
+
+var object = {};
+object.proxy = 'http://xxx';
+object.token = '123123132132';
+
+client.hset('htokens', 'token1',JSON.stringify(object), function (err, reply){
+	console.log(reply);
+});
+
+client.hset('htokens', 'token2',JSON.stringify(object), function (err, reply){
+	console.log(reply);
+});
+
+client.hset('htokens', 'token3',JSON.stringify(object), function (err, reply){
+	console.log(reply);
+});
+
+
+client.hvals('htokens', function(err, reply){
+	console.log(reply);
+	var result = JSON.parse(reply);
+	console.log(result.token);
+});
+
 
 client.get('token:count:1234', function (err, reply){
 	if (reply) {

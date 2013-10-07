@@ -1,0 +1,10 @@
+{
+  "name": "testing",
+  "description": "mocha = should",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+      "node-uuid": "*",
+      "should": "*"
+  }
+}

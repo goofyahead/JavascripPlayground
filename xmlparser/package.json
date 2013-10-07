@@ -1,0 +1,10 @@
+{
+  "name": "xml_parser",
+  "description": "parse xml and play with a js object",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+      "colors": "*",
+      "xml2js" :"*"
+  }
+}
