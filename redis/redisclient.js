@@ -1,4 +1,5 @@
 var redis = require("redis"),
+<<<<<<< HEAD
 
 // TWEMPROXY CODE
 // client = redis.createClient(22122, '127.0.0.1', {
@@ -6,6 +7,12 @@ var redis = require("redis"),
 // });
 
 client = redis.createClient();
+=======
+     
+client = redis.createClient(6379, '127.0.0.1', {
+	no_ready_check : true
+});
+>>>>>>> 311502d7a010fb06f16688fb9763ff60f15ff28b
 
     // if you'd like to select database 3, instead of 0 (default), call
     // client.select(3, function() { /* ... */ });
@@ -13,6 +20,13 @@ client = redis.createClient();
 client.on("error", function (err) {
     console.log("Error " + err);
 });
+
+client.sadd('heroes:a', 'batman', function (err, data) {
+	console.log(data);
+});
+client.sadd('heroes:b', 'robin', redis.print);
+
+client.sunion('myTestHeroes', 'myOtherHeroes', redis.print);
 
 client.set('token:1234', "elefante verde", redis.print);
 
