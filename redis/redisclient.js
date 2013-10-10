@@ -1,5 +1,4 @@
 var redis = require("redis"),
-<<<<<<< HEAD
 
 // TWEMPROXY CODE
 // client = redis.createClient(22122, '127.0.0.1', {
@@ -7,12 +6,10 @@ var redis = require("redis"),
 // });
 
 client = redis.createClient();
-=======
-     
+
 client = redis.createClient(6379, '127.0.0.1', {
 	no_ready_check : true
 });
->>>>>>> 311502d7a010fb06f16688fb9763ff60f15ff28b
 
     // if you'd like to select database 3, instead of 0 (default), call
     // client.select(3, function() { /* ... */ });
@@ -21,10 +18,22 @@ client.on("error", function (err) {
     console.log("Error " + err);
 });
 
+client.zadd('zset', new Date().getTime(), 'epa', redis.print);
+
+client.zrange('zset', '-inf', '+inf', redis.print);
+
+client.zremrangebyscore('zset', '-inf', 3, function (err, data) {
+	console.log('deleted ' + data + ' from zset');
+});
+
 client.sadd('heroes:a', 'batman', function (err, data) {
 	console.log(data);
 });
-client.sadd('heroes:b', 'robin', redis.print);
+client.sadd('heroes:a', 'robin', redis.print);
+
+client.smembers('heroes:a', function(err, reply){
+	console.log(reply);
+});
 
 client.sunion('myTestHeroes', 'myOtherHeroes', redis.print);
 
@@ -44,11 +53,7 @@ client.sadd('tokens', JSON.stringify(object), function (err, reply){
 	console.log(reply);
 });
 
-client.smembers('tokens', function(err, reply){
-	console.log(reply);
-	var result = JSON.parse(reply);
-	console.log(result.token);
-});
+
 
 /*client.set('token:count:1235', 1, function (err, reply){
 	console.log(reply);
@@ -73,8 +78,6 @@ client.hset('htokens', 'token3',JSON.stringify(object), function (err, reply){
 
 client.hvals('htokens', function(err, reply){
 	console.log(reply);
-	var result = JSON.parse(reply);
-	console.log(result.token);
 });
 
 
