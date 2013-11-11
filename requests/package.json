@@ -9,6 +9,7 @@
   },
   "dependencies": {
   	"request" : "*",
-    "async" : "*"
+    "async" : "*",
+    "underscore" : "*"
   }
 }

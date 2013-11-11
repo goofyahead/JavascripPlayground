@@ -18,3 +18,7 @@ p2.noise();
 
 console.log(p1 instanceof Person);
 console.log(p1 instanceof Human);
+
+var check = require('./check');
+
+check.echo('Alex');

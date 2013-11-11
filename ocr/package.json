@@ -1,0 +1,18 @@
+{
+  "name": "ocr",
+  "version": "0.0.1",
+  "description": "A node package that simplifies the use of the ark API.",
+  "main": "ocr.js",
+  "author": "Alejandro Vidal Rodriguez <goofyahead@gmail.com>",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/arkcore/ark-sdk/issues"
+  },
+  "dependencies": {
+    "request": "2.x",
+    "async" : "0.2.x",
+    "underscore" : "1.5.x",
+    "colors" : "*",
+    "nodecr" : "*"
+  }
+}
