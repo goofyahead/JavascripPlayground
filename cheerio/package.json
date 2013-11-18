@@ -1,0 +1,12 @@
+{
+  "name": "cheerio_klout_score",
+  "description": "klout score",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+      "node-uuid": "*",
+      "colors": "*",
+      "request" : "*",
+      "cheerio" : "*"
+  }
+}

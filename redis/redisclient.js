@@ -20,15 +20,62 @@ client.on("error", function (err) {
 
 client.zadd('zset', new Date().getTime(), 'epa', redis.print);
 
-client.zrange('zset', '-inf', '+inf', redis.print);
-
 client.zremrangebyscore('zset', '-inf', 3, function (err, data) {
 	console.log('deleted ' + data + ' from zset');
 });
 
+client.sadd('array', [1,2,3,4,5], redis.print);
+
+store and clean likes
+var likes = [1,2,3,4,5,6,7,8,9];
+var responded = false;
+
+likes.forEach( function (elem) {
+	
+		client.zadd('brand:ids:zara', 0, elem, function (err, data) {
+			client.zcard('brand:ids:zara', function (err, data){
+			if (data >= 5 && !responded) {
+				client.zrange('brand:ids:zara', 0, -1, function (err, data){
+					if (!responded) console.log(data);
+					responded = true;
+
+				});
+			}
+			});
+		});
+
+});
+
+likes = [];
+
+var likes = [1,1,1,4,5,6,7,8,9];
+var response = false;
+
+client.sadd('temp:comparator', likes, function (err, data) {
+	client.sdiff('temp:comparator', 'set:zara', function (err, data) {
+		console.log(data);
+		if (data.length > 0) {
+			client.sadd('set:zara', data, redis.print);
+			client.del('temp:comparator', redis.print);
+			data.forEach(function (elem) {
+				client.rpush('brand:ids:list:zara', elem, function (err, data) {
+					if (data >= 5 && ! response) {
+						response = true;
+						client.lrange('brand:ids:list:zara', 0, 4, function (err, data) {
+							console.log(data);
+						});
+					}
+				});
+			});
+		}
+	});
+});
+likes = [];
+
 client.sadd('heroes:a', 'batman', function (err, data) {
 	console.log(data);
 });
+
 client.sadd('heroes:a', 'robin', redis.print);
 
 client.smembers('heroes:a', function(err, reply){
@@ -53,11 +100,9 @@ client.sadd('tokens', JSON.stringify(object), function (err, reply){
 	console.log(reply);
 });
 
-
-
-/*client.set('token:count:1235', 1, function (err, reply){
+client.set('token:count:1235', 1, function (err, reply){
 	console.log(reply);
-});*/
+});
 
 var object = {};
 object.proxy = 'http://xxx';
@@ -89,5 +134,3 @@ client.get('token:count:1234', function (err, reply){
 		});
 	}
 });
-
-
