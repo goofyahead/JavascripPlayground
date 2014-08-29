@@ -1,0 +1,1 @@
+{\"device_uuid\":\"FAMOCO\",\"transactions\":[{\"made_at\":\"2014-07-18T15:29Z\",\"ticket_number\":\"C438B0D6\",\"token_currency\":\"lkr\",\"token_value_cents\":-100}],\"line_items\":[{\"currency_code\":\"lkr\",\"item_id\":13,\"quantity\":1,\"unit_price\":100}],\"synced\":false,\"id\":18}
