@@ -6,6 +6,7 @@ var redis = require("redis"),
 client = redis.createClient();
 
 exports.toHotspot = function () {
+	console.log('setting to hotspot MODE'.yellow);
 	async.parallel([
 		function(callback){
 			fs.readFile('./files/daemonON.txt', function (err, data) {

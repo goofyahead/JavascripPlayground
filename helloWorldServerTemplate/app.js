@@ -52,6 +52,7 @@ setTimeout(function () {
 				else {
 					console.log('RASPBERRY PI ONLINE'.green);
 					console.log (target + ": Alive");
+					config.toHotspot();
 				}
 			});
 		}
