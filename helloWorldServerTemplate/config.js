@@ -8,12 +8,13 @@ client = redis.createClient();
 exports.toHotspot = function () {
 	async.parallel([
 		function(callback){
-			fs.readFile('./files/daemonOn.txt', function (err, data) {
+			fs.readFile('./files/daemonON.txt', function (err, data) {
 				if (err) throw err;
 				console.log('writing daemon file /etc/default/udhcpd');
 				fs.writeFile('/etc/default/udhcpd', data, function(err) {
 					if (err) throw err;
 					console.log('DAEMON configured'.green);
+					callback(null);
 				});
 			});
 		}, function (callback) {
@@ -23,6 +24,7 @@ exports.toHotspot = function () {
 				fs.writeFile('/etc/network/inferfaces', data, function (err){
 					if (err) throw err;
 					console.log('interface configured for Hotspot'.green);
+					callback(null);
 				});
 			});
 		}, function (callback) {
@@ -32,6 +34,7 @@ exports.toHotspot = function () {
 				fs.writeFile('/etc/default/udhcpd', data, function (err) {
 					if (err) throw err;
 					console.log('UDHCPD enabled'.green);
+					callback(null);
 				});
 			});
 	}],// optional callback
