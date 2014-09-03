@@ -67,14 +67,9 @@ exports.toConnected = function (SSID, password) {
 				fs.writeFile('/etc/network/interfaces', data, function (err){
 					if (err) throw err;
 					console.log('interface configured for Hotspot'.green);
-					fs.appendFileSync('/etc/network/interfaces', '\twpa-ssid "' + SSID + '"\n', function (err) {
-						if (err) throw err;
-						console.log('The "data to append" was appended to file!');
-					});
-					fs.appendFileSync('/etc/network/interfaces', '\twpa-psk "' + password + '"\n', function (err) {
-						if (err) throw err;
-						console.log('The "data to append" was appended to file!');
-					});
+					fs.appendFileSync('/etc/network/interfaces', '\nwpa-ssid "' + SSID + '"\n');
+					fs.appendFileSync('/etc/network/interfaces', '\twpa-psk "' + password + '"\n');
+					fs.appendFileSync('/etc/network/interfaces','\niface default inet dhcp\n');
 
 					callback(null);
 				});
