@@ -10,8 +10,8 @@ exports.toHotspot = function () {
 		function(callback){
 			fs.readFile('./files/daemonON.txt', function (err, data) {
 				if (err) throw err;
-				console.log('writing daemon file /etc/default/udhcpd');
-				fs.writeFile('/etc/default/udhcpd', data, function(err) {
+				console.log('writing daemon file /etc/default/hostapd');
+				fs.writeFile('/etc/default/hostapd', data, function(err) {
 					if (err) throw err;
 					console.log('DAEMON configured'.green);
 					callback(null);
@@ -21,7 +21,7 @@ exports.toHotspot = function () {
 			fs.readFile('./files/ifaceHotspot.txt', function (err, data) {
 				if (err) throw err;
 				console.log('writing interfaces file /etc/network/interfaces');
-				fs.writeFile('/etc/network/inferfaces', data, function (err){
+				fs.writeFile('/etc/network/interfaces', data, function (err){
 					if (err) throw err;
 					console.log('interface configured for Hotspot'.green);
 					callback(null);
@@ -52,8 +52,8 @@ exports.toConnected = function (SSID, password) {
 		function(callback){
 			fs.readFile('./files/daemonOFF.txt', function (err, data) {
 				if (err) throw err;
-				console.log('writing daemon file /etc/default/udhcpd');
-				fs.writeFile('/etc/default/udhcpd', data, function(err) {
+				console.log('writing daemon file /etc/default/hostapd');
+				fs.writeFile('/etc/default/hostapd', data, function(err) {
 					if (err) throw err;
 					console.log('DAEMON configured'.green);
 					callback(null);
@@ -63,7 +63,7 @@ exports.toConnected = function (SSID, password) {
 			fs.readFile('./files/ifaceWifi.txt', function (err, data) {
 				if (err) throw err;
 				console.log('writing interfaces file /etc/network/interfaces');
-				fs.writeFile('/etc/network/inferfaces', data, function (err){
+				fs.writeFile('/etc/network/interfaces', data, function (err){
 					if (err) throw err;
 					console.log('interface configured for Hotspot'.green);
 					fs.appendFileSync('/etc/network/interfaces', '\twpa-ssid "' + SSID + '"\n', function (err) {
@@ -100,18 +100,18 @@ exports.toConnected = function (SSID, password) {
 
 function reboot() {
 	var spawn = require('child_process').spawn,
-				ls    = spawn('reboot');
+	ls    = spawn('reboot');
 
-				ls.stdout.on('data', function (data) {
-					console.log('stdout: ' + data);
-				});
+	ls.stdout.on('data', function (data) {
+		console.log('stdout: ' + data);
+	});
 
-				ls.stderr.on('data', function (data) {
-					console.log('stderr: ' + data);
-				});
+	ls.stderr.on('data', function (data) {
+		console.log('stderr: ' + data);
+	});
 
-				ls.on('close', function (code) {
-					console.log('child process exited with code ' + code);
-				});
+	ls.on('close', function (code) {
+		console.log('child process exited with code ' + code);
+	});
 }
 
