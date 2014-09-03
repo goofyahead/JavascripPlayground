@@ -19,28 +19,7 @@ setTimeout(function () {
 		if (reply && reply == 1) {
 			console.log('STARTING SERVER FOR CONFIG NETWORK');
 			// in hotspot mode wait for config and reboot on click
-			app.set('views', __dirname + '/views');
-			app.use(favicon());
-			app.use(bodyParser.json());
-			app.use(bodyParser.urlencoded());
-			app.use(cookieParser());
-			app.engine('.html', require('ejs').renderFile);
-			app.set('view engine', 'html');
-
-			app.post('/config', function (req, res) {
-				var ssid = req.param('ssid');
-				var password = req.param('pass');
-
-				console.log('configuration received: '.yellow + password + ' ssid ' + ssid);
-				config.toConnected(ssid, password);
-			});
-
-			app.get('/', function (req, res){
-				res.render('form');
-			});
-
-			app.listen(3000);
-
+			setUpServer();
 		} else {
 			console.log('CHECKING CONNECTION');
 			// if not in hotspot, check if internet, if not internet go to hotspot and reboot
@@ -52,13 +31,34 @@ setTimeout(function () {
 				else {
 					console.log('RASPBERRY PI ONLINE'.green);
 					console.log (target + ": Alive");
-					config.toHotspot();
+					setUpServer();
 				}
 			});
 		}
 	});
+}, 5000);
 
-}, 1000);
+function setUpServer() {
+	app.set('views', __dirname + '/views');
+	app.use(favicon());
+	app.use(bodyParser.json());
+	app.use(bodyParser.urlencoded());
+	app.use(cookieParser());
+	app.engine('.html', require('ejs').renderFile);
+	app.set('view engine', 'html');
 
+	app.post('/config', function (req, res) {
+		var ssid = req.param('ssid');
+		var password = req.param('pass');
 
+		console.log('configuration received: '.yellow + password + ' ssid ' + ssid);
+		config.toConnected(ssid, password);
+	});
+
+	app.get('/', function (req, res){
+		res.render('form');
+	});
+
+	app.listen(3000);
+}
 
