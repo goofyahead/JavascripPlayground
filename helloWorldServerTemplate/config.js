@@ -1,6 +1,9 @@
 var fs = require('fs');
 var async = require('async');
 var colors = require('colors');
+var HOTSPOTMODE = "HOTSPOTMODE";
+var redis = require("redis"),
+client = redis.createClient();
 
 exports.toHotspot = function () {
 	async.parallel([
@@ -34,6 +37,7 @@ exports.toHotspot = function () {
 	}],// optional callback
 	function(err, results){
 		if (err) throw err;
+		client.set(HOTSPOTMODE, 1);
 		console.log('config files updated, rebooting...');
 		reboot();
 	});
@@ -85,6 +89,7 @@ exports.toConnected = function (SSID, password) {
 	// optional callback
 	function(err, results){
 		if (err) throw err;
+		client.set(HOTSPOTMODE, 0);
 		console.log('config files updated, rebooting...');
 		reboot();
 	});
