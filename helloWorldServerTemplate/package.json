@@ -11,6 +11,13 @@
     "static-favicon": "~1.0.0",
     "morgan": "~1.0.0",
     "cookie-parser": "~1.0.1",
+    "body-parser": "~1.0.0",
+    "net-ping" : "*",
+    "redis" : "*",
+    "async" : "*",
+    "ejs" : "*",
+    "static-favicon": "~1.0.0",
+    "cookie-parser": "~1.0.1",
     "body-parser": "~1.0.0"
   }
 }
