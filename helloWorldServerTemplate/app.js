@@ -2,7 +2,8 @@ var express = require('express');
 var app = express();
 var ping = require('net-ping');
 var session = ping.createSession ();
-var config = require('./config')
+var config = require('./config');
+var HOTSPOTMODE = "HOTSPOTMODE";
 var redis = require("redis"),
 client = redis.createClient();
 var colors = require ('colors');
@@ -10,7 +11,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var favicon = require('static-favicon');
 
-var HOTSPOTMODE = "HOTSPOTMODE";
+
 
 setTimeout(function () {
 	//check if its on hotstpot mode
@@ -46,7 +47,7 @@ setTimeout(function () {
 			session.pingHost ('8.8.8.8', function (error, target) {
 				if (error) {
 					console.log('No internet, changing files and rebooting on HOTSPOT'.green);
-					config.toHostspot();
+					config.toHotspot();
 				}
 				else {
 					console.log('RASPBERRY PI ONLINE'.green);
