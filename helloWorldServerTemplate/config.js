@@ -26,7 +26,7 @@ exports.toHotspot = function () {
 				});
 			});
 		}, function (callback) {
-			fs.readFile('./enabledUDHCPD.txt', function (err, data) {
+			fs.readFile('./files/enabledUDHCPD.txt', function (err, data) {
 				if (err) throw err;
 				console.log('writing UDHCP file /etc/default/udhcpd');
 				fs.writeFile('/etc/default/udhcpd', data, function (err) {
@@ -76,7 +76,7 @@ exports.toConnected = function (SSID, password) {
 				});
 			});   
 		}, function (callback){
-			fs.readFile('./disabledUDHCPD.txt', function (err, data) {
+			fs.readFile('./files/disabledUDHCPD.txt', function (err, data) {
 				if (err) throw err;
 				console.log('writing UDHCP file /etc/default/udhcpd');
 				fs.writeFile('/etc/default/udhcpd', data, function (err) {
