@@ -7,9 +7,15 @@
     "node": "0.10.x",
     "npm": "1.2.x"
   },
+  "scripts" : {
+    "start" : "node request.js"
+  },
   "dependencies": {
   	"request" : "*",
     "async" : "*",
-    "underscore" : "*"
+    "underscore" : "*",
+    "form-data" : "*",
+    "http-post" : "*",
+    "node-uuid" : "*"
   }
 }

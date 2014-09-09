@@ -10,6 +10,11 @@ var colors = require ('colors');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var favicon = require('static-favicon');
+// Twilio Credentials 
+var accountSid = 'AC0b488ea0c7b3e3cd4c698077cbf31c64'; 
+var authToken = '231599f9c72806e6853b1f514e1e2e1f'; 
+//require the Twilio module and create a REST client 
+var client = require('twilio')(accountSid, authToken);
 
 setTimeout(function () {
 	//check if its on hotstpot mode
@@ -29,6 +34,33 @@ setTimeout(function () {
 				else {
 					console.log('RASPBERRY PI ONLINE'.green);
 					console.log (target + ": Alive");
+
+					var myLocalIp = '';
+					var os = require( 'os' );
+					var networkInterfaces = os.networkInterfaces( );
+
+					for (property in networkInterfaces) {	
+						for (var x = 0; x < networkInterfaces[property].length; x++){
+							if (networkInterfaces[property][x].internal == false && networkInterfaces[property][x].family == 'IPv4'){
+								myLocalIp = networkInterfaces[property][x].address;
+								console.log('Current ip is: ' + myLocalIp);
+							}
+						}
+					}
+
+					// notify local ip
+					client.messages.create({
+						from: "+14156914520",
+						to: "+34626292957",
+						body: "my new local Ip is: " + myLocalIp
+					}, function(err, message) {
+						if (! err) {
+							console.log("message sent: ".green + message.sid); 
+						}else {
+							console.log(error);
+						}
+					});
+
 					setUpServer();
 				}
 			});

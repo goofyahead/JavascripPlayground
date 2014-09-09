@@ -1,20 +1,58 @@
 var request = require('request');
 var _ = require('underscore');
 var baseURL = 'http://v4:doyjod134u@elasticsearch-a-1184289202.us-east-1.elb.amazonaws.com:2013/profiles_demo/a/_search';
-
+var FormData = require('form-data');
 var request = require('request');
+var http = require('http');
+var fs = require('fs');
+var path = require('path');
+http.post = require('http-post');
+var uuid = require('node-uuid');
 
-request(
-		{
-			url : 'https://testapi.ark.com/email/goofyahead@gmail.com',
+// var files =
+// {
+// 	param: "file",
+// 	path: "./1.jpg"
+// };
+
+// http.post('http://localhost:3000/upload', [], files, function(res){
+// 	console.log('response');
+// });
+
+// var r = request.post('http://localhost:3000/upload', function optionalCallback (err, httpResponse, body) {
+//   if (err) {
+//     return console.error('upload failed:', err);
+//   }
+//   console.log(httpResponse);
+//   console.log('Upload successful!  Server responded with:', body);
+// });
+
+var r = request.post({
+			url : 'http://localhost/api/video-upload',
 			headers : {
-				api_token : '0b1c2fa1-364b-46a9-95e4-84b05f2eeaf6'
+				authorization : '003467c7d1854d460821f55a202e013dbe1b9e428b344f0f38d1580805b80240'
 			}
-		},
-		function (err, response, body) {
-			if (err) throw err;
-			console.log(body); //response object is printed
-		});
+		}, function optionalCallback (err, httpResponse, body) {
+  if (err) {
+    return console.error('upload failed:', err);
+  }
+  console.log('Upload successful!  Server responded with:', body);
+})
+var form = r.form()
+form.append('filename', 'auto_' + uuid.v4());
+form.append('uploadingVideo', fs.createReadStream(path.join(__dirname, 'first.h264')))
+
+// request(
+// 		{
+// 			url : 'https://testapi.ark.com/email/goofyahead@gmail.com',
+// 			headers : {
+// 				api_token : '0b1c2fa1-364b-46a9-95e4-84b05f2eeaf6'
+// 			}
+// 		},
+// 		function (err, response, body) {
+// 			if (err) throw err;
+// 			console.log(body); //response object is printed
+// 		});
 
 // function mustQuery (from, perPage) {
 // 	var from = from || 0;
@@ -52,7 +90,7 @@ request(
 // 				delete correctProfile.place;
 // 				correctProfile.links = correctProfile.networks;
 // 				delete correctProfile.networks;
-				
+
 // 				var links = [];
 // 	            //console.log('HIT ON ES'.green);
 // 	            if (! correctProfile.is_organisation){
