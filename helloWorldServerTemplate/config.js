@@ -95,6 +95,8 @@ exports.toConnected = function (SSID, password) {
 }
 
 function reboot() {
+	console.log("REBOOTING".red);
+
 	var spawn = require('child_process').spawn,
 	ls    = spawn('reboot');
 

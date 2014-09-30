@@ -5,7 +5,7 @@ var session = ping.createSession ();
 var config = require('./config');
 var HOTSPOTMODE = "HOTSPOTMODE";
 var redis = require("redis"),
-client = redis.createClient();
+redisClient = redis.createClient();
 var colors = require ('colors');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
@@ -18,8 +18,12 @@ var client = require('twilio')(accountSid, authToken);
 
 setTimeout(function () {
 	//check if its on hotstpot mode
-	client.get(HOTSPOTMODE, function (err, reply) {
-		if (reply && reply == 1) {
+	redisClient.get(HOTSPOTMODE, function (err, value) {
+		console.log("reply: ");
+		console.log(value);
+		console.log('end reply.');
+		if (err) throw err;
+		if (value && value == 1) {
 			console.log('STARTING SERVER FOR CONFIG NETWORK');
 			// in hotspot mode wait for config and reboot on click
 			setUpServer();
@@ -66,7 +70,7 @@ setTimeout(function () {
 			});
 		}
 	});
-}, 1000);
+}, 10000);
 
 function setUpServer() {
 	app.set('views', __dirname + '/views');
@@ -105,8 +109,8 @@ function setUpServer() {
 
 		console.log(cyphered);
 
-		client.set('HOSTADDRESS', host);
-		client.set('HASH', cyphered);
+		redisClient.set('HOSTADDRESS', host);
+		redisClient.set('HASH', cyphered);
 
 		if (ssid) {	
 			console.log('configuration received: '.yellow + password + ' ssid ' + ssid);
