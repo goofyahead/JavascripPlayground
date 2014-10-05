@@ -64,7 +64,6 @@ setTimeout(function () {
 							console.log(error);
 						}
 					});
-
 					setUpServer();
 				}
 			});
